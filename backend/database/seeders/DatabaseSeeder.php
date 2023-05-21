@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Blog;
+use App\Models\Topic;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+         \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // topics seeder
+        $topics = ['programming', 'design', 'business', 'marketing',  'finance', 'politics', 'science', 'health', 'culture', 'travel', 'music', 'art', 'cooking', 'career', 'family', 'hobbies'];
+        foreach ($topics as $topic) {
+            Topic::factory()->create([
+                'name' => $topic
+            ]);
+        }
+
+        // blog seeder
+
+        Blog::factory(100)->create();
     }
 }
