@@ -22,9 +22,10 @@ class BlogFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id,
             'title' => fake()->title,
             'slug' => fake()->slug,
+            'image' => 'https://i.pravatar.cc/150?img='.$this->faker->numberBetween(0, 70),
             'topic_id' => Topic::inRandomOrder()->first()->id,
-            'body' => fake()->paragraph,
-            'duration' => 3,
+            'body' => fake()->paragraph(70),
+            'duration' => fake()->numberBetween(3, 10),
         ];
     }
 }
