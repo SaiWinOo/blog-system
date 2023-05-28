@@ -38,8 +38,8 @@
                 <div class="flex items-start justify-between">
                     <div class="flex flex-col">
                         <span class="text-3xl font-bold my-2">Written By {{ blog?.user?.name }}</span>
-                        <span class="my-1">5k followers</span>
-                        <span>I am a Software Engineer</span>
+                        <span class="my-1">{{ blog?.user?.followers_count }} followers</span>
+                        <span>{{ blog?.user?.bio }}</span>
                     </div>
                     <div class="flex items-center mt-2 gap-3">
                         <Button>Follow</Button>
@@ -52,8 +52,7 @@
             <div class="border border-1 my-7"></div>
             <p class="my-5">More from <span class="font-semibold">{{ blog?.user?.name }}</span></p>
             <div class="grid grid-cols-2 gap-5">
-                <RecommendPostCard :blog="blog"/>
-                <RecommendPostCard :blog="blog"/>
+                <RecommendPostCard v-for="recom_blog in recommendedBlogs" :key="recom_blog.id" :blog="recom_blog"/>
             </div>
         </div>
     </div>
@@ -72,7 +71,8 @@ export default {
     inject: ['fetchData', '$formatDate'],
     data() {
         return {
-            blog: {}
+            blog: {},
+            recommendedBlogs: []
         };
     },
     methods: {
@@ -80,7 +80,7 @@ export default {
             let uri = '/blogs/' + this.$route.params.slug;
             let res = await this.fetchData(uri);
             this.blog = res.data.blog;
-            console.log(res.data);
+            this.recommendedBlogs = res.data.recommendedBlogs;
         }
     },
     mounted() {

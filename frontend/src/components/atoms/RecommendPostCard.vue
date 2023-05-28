@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name : 'blog-detail', params : {slug : blog?.slug}}">
+    <router-link :to="{name : 'blog-detail', params : {slug : blog?.slug}}" class="h-[500px]">
         <div>
             <img :src="blog?.image" alt="" class="w-full h-[150px] object-cover rounded-sm">
         </div>
