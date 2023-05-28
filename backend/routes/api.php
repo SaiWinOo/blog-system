@@ -25,4 +25,5 @@ Route::get('/hello', function () {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('blogs', [BlogController::class, 'index']);
+Route::get('/blogs', [BlogController::class, 'index']);
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);

@@ -20,11 +20,11 @@ class BlogFactory extends Factory
     {
         return [
             'user_id' => User::inRandomOrder()->first()->id,
-            'title' => fake()->title,
+            'title' => fake()->realText(40),
             'slug' => fake()->slug,
             'image' => 'https://i.pravatar.cc/150?img='.$this->faker->numberBetween(0, 70),
             'topic_id' => Topic::inRandomOrder()->first()->id,
-            'body' => fake()->paragraph(70),
+            'body' => fake()->realText(1000),
             'duration' => fake()->numberBetween(3, 10),
         ];
     }
